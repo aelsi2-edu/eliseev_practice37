@@ -1,0 +1,78 @@
+#:kivy 1.0
+<QuestionScreen>:
+	BoxLayout:
+		padding: 10
+		orientation: "vertical"
+		Label:
+			text_size: self.size
+			halign: 'center'
+			valign: 'center'
+			text: app.question_text
+		AsyncImage:
+			source: app.image_source
+		BoxLayout:
+			orientation: "horizontal"
+			CheckBox:
+				id: cb_1
+				size_hint_x: 0.4
+				group: "question"
+				on_active: app.on_select(0, self.active)
+			Label:
+				halign: "left"
+				valign: "center"
+				text_size: self.size
+				text: app.option_0_text
+		BoxLayout:
+			orientation: "horizontal"
+			CheckBox:
+				id: cb_2
+				size_hint_x: 0.4
+				group: "question"
+				on_active: app.on_select(1, self.active)
+			Label:
+				halign: "left"
+				valign: "center"
+				text_size: self.size
+				text: app.option_1_text
+		BoxLayout:
+			orientation: "horizontal"
+			CheckBox:
+				id: cb_3
+				size_hint_x: 0.4
+				group: "question"
+				on_active: app.on_select(2, self.active)
+			Label:
+				halign: "left"
+				valign: "center"
+				text_size: self.size
+				text: app.option_2_text
+		BoxLayout:
+			orientation: "horizontal"
+			CheckBox:
+				id: cb_4
+				size_hint_x: 0.4
+				group: "question"
+				on_active: app.on_select(3, self.active)
+			Label:
+				halign: "left"
+				valign: "center"
+				text_size: self.size
+				text: app.option_3_text
+		Button:
+			text: "Далее"
+			disabled: not app.next_enabled
+			on_release: app.on_next_click()
+
+<ResultScreen>:
+	BoxLayout:
+		orientation: "vertical"
+		Label:
+			text_size: self.size
+			halign: 'center'
+			valign: 'center'
+			text: "Поздравляем!"
+		Label:
+			text_size: self.size
+			halign: 'center'
+			valign: 'center'
+			text: "Ваш вес составляет " + str(app.result) + " кг"
